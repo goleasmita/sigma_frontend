@@ -1,0 +1,5 @@
+client/src/
+ client/package.json
+  client/.gitignore
+   client/index.html
+    client/vite.config.js
