@@ -35,15 +35,19 @@ import WhatsAppButton from "./components/WhatsAppButton";
 export default function App() {
   return (
     <div>
-      <BrowserRouter>
+      {/* ✅ Add basename so routes work under /sigma_frontend */}
+      <BrowserRouter basename="/sigma_frontend">
         <Navbar />
-        <ScrollToTop /> {/* 👈 Add this here */}
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+
+          {/* User Dashboard */}
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="user" element={<UserDashboard />} />
           </Route>
 
+          {/* Admin Dashboard */}
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/create-category" element={<CreateCategory />} />
@@ -52,12 +56,16 @@ export default function App() {
             <Route path="admin/enquiry" element={<Enquiries />} />
           </Route>
 
+          {/* Auth */}
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/login" element={<Login />} />
+
+          {/* Static Pages */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<AboutUs />} />
 
+          {/* Products */}
           <Route path="/products" element={<Products />}>
             <Route path="gearless" element={<GearlessLifts />} />
             <Route path="goods" element={<Goods />} />
@@ -74,7 +82,7 @@ export default function App() {
           </Route>
         </Routes>
         <Footer />
-        {/* ✅ Floating WhatsApp button on every page */}
+        {/* ✅ Floating WhatsApp button */}
         <WhatsAppButton />
       </BrowserRouter>
     </div>
